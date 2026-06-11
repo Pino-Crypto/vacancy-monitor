@@ -3,7 +3,7 @@ name: vacancy-check
 on:
   schedule:
     # 10分おきに実行(UTC基準。GitHub側の都合で数分遅れることがあります)
-    - cron: "*/10 * * * *"
+    - cron: "4,16,28,40,52 * * * *"
   workflow_dispatch: {}  # 手動実行ボタンも有効化
 
 permissions:
