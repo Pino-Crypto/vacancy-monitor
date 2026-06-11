@@ -1,0 +1,42 @@
+name: vacancy-check
+
+on:
+  schedule:
+    # 10分おきに実行(UTC基準。GitHub側の都合で数分遅れることがあります)
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}  # 手動実行ボタンも有効化
+
+permissions:
+  contents: write  # state.json をコミットして前回状態を保持するため
+
+concurrency:
+  group: vacancy-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Run monitor
+        env:
+          RAKUTEN_APP_ID: ${{ secrets.RAKUTEN_APP_ID }}
+          RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+        run: python monitor.py
+
+      - name: Save state
+        run: |
+          git config user.name "vacancy-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git pull --rebase || true
+          git add state.json || true
+          git diff --cached --quiet || git commit -m "update state"
+          git push || true
