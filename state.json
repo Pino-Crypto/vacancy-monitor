@@ -1,16 +1,16 @@
 {
   "hotels": {
     "52641": {
-      "vacant": true
+      "vacant": false
     },
     "52723": {
-      "vacant": true
+      "vacant": false
     },
     "54087": {
-      "vacant": true
+      "vacant": false
     },
     "78191": {
-      "vacant": true
+      "vacant": false
     }
   },
   "error_streak": 0,
