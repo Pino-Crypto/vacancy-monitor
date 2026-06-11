@@ -72,6 +72,7 @@ def check_all_hotels(app_id: str, access_key: str) -> dict | None:
     }
     headers = {         
       "Authorization": f"Bearer {access_key}",
+      "Origin": "https://github.com",
       "Referer": "https://github.com/",     } # 新APIの認証方式
 
     try:
