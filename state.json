@@ -1,5 +1,18 @@
 {
-  "hotels": {},
-  "error_streak": 7,
-  "error_notified": true
+  "hotels": {
+    "52641": {
+      "vacant": false
+    },
+    "52723": {
+      "vacant": false
+    },
+    "54087": {
+      "vacant": false
+    },
+    "78191": {
+      "vacant": false
+    }
+  },
+  "error_streak": 0,
+  "error_notified": false
 }
