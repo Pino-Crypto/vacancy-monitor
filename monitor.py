@@ -70,7 +70,9 @@ def check_all_hotels(app_id: str, access_key: str) -> dict | None:
         "responseType": "middle",
         "hits": 30,
     }
-    headers = {"Authorization": f"Bearer {access_key}"}  # 新APIの認証方式
+    headers = {         
+      "Authorization": f"Bearer {access_key}",
+      "Referer": "https://github.com/",     } # 新APIの認証方式
 
     try:
         resp = requests.get(API_URL, params=params, headers=headers, timeout=30)
