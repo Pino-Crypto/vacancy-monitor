@@ -26,7 +26,7 @@ import requests
 
 
 CHECKIN = "2026-06-16"
-CHECKIN = "2026-06-17"
+CHECKOUT = "2026-06-17"
 ADULTS = 1
 
 # 楽天トラベルのホテル番号と表示名(那覇市内の東横イン)
