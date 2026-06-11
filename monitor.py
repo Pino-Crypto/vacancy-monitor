@@ -60,6 +60,7 @@ def check_all_hotels(app_id: str, access_key: str) -> dict | None:
     """
     params = {
         "applicationId": app_id,
+        "accessKey": access_key,
         "format": "json",
         "hotelNo": ",".join(str(no) for no in HOTELS),
         "checkinDate": CHECKIN,
